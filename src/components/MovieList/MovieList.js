@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom"
+import { useMovieContext } from '../../context/MoviesContext';
+const MovieList = () => {
+    const { movies, getMovies } = useMovieContext()
 
-const MovieList = ({ movies }) => {
-  
+    useEffect(() => {
+        getMovies()
+    }, [])
+
+    console.log("movies", movies)
+
     return (
         <section>
             {movies.map((movie) => {
